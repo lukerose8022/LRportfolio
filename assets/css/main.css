@@ -1,0 +1,574 @@
+/* =========================================================
+   main.css — Portfolio site styles
+   Aesthetic: monospace body, minimal whitespace, Tyler Farghly style
+   ========================================================= */
+
+/* ---------- Reset / Base ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Roboto Mono', 'Courier New', monospace;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: #111;
+  background-color: #fff;
+  padding-top: 52px;
+
+  /* ── Background image ── */
+  background-image: url('../../images/backround_portfolio.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Semi-transparent overlay so text stays readable over the background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.85);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Faint overlay of background 2 */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url('../../images/backround2.svg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0.04;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Ensure all direct children sit above the overlays */
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+a {
+  color: #3a3aff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Navbar ---------- */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.15rem;
+  padding: 0.8rem 1.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px) saturate(1.2);
+  -webkit-backdrop-filter: blur(8px) saturate(1.2);
+  border-bottom: none;
+  width: auto;
+  border-radius: 0 0 0.5rem 0;
+}
+
+.site-nav a {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: #333;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.site-nav a:hover {
+  color: #3a3aff;
+  text-decoration: none;
+}
+
+.site-nav a.active {
+  color: #3a3aff;
+}
+
+/* ---------- Page wrapper ---------- */
+.page-content {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 3.5rem 2rem 5rem;
+}
+
+/* ---------- Profile block ---------- */
+.profile-header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.profile-photo-wrapper {
+  flex: 0 0 50%;
+}
+
+.profile-text {
+  flex: 1;
+  min-width: 0;
+}
+
+
+
+
+
+.profile-photo-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Placeholder shown when no real photo is present */
+.profile-photo-placeholder {
+  width: 270px;
+  height: 330px;
+  background-color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ---------- Name & tagline ---------- */
+.profile-name-block {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.profile-name-img {
+  height: 2.4rem;
+  width: auto;
+  display: block;
+}
+
+.profile-name {
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  font-size: 2.6rem;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
+  color: #111;
+}
+
+.profile-name strong {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.profile-tagline {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.9rem;
+  color: #111;
+  margin-bottom: 1.6rem;
+  letter-spacing: 0.18em;
+  word-spacing: 0.3em;
+}
+
+.profile-bio p {
+  font-size: 0.88rem;
+  color: #111;
+  max-width: 100%;
+  line-height: 1.7;
+  margin-bottom: 0.9rem;
+}
+
+/* ---------- Social links (bottom of page) ---------- */
+.social-links {
+  margin-top: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.8rem;
+}
+
+.social-links a {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.88rem;
+  color: #3a3aff;
+}
+
+.social-links a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Section headings ---------- */
+h2.section-heading {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111;
+  letter-spacing: 0.01em;
+  margin: 2.8rem 0 1rem;
+  border: none;
+  text-transform: none;
+  padding: 0;
+}
+
+/* ---------- Recent table ---------- */
+.recent-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+}
+
+.recent-table tr {
+  vertical-align: top;
+}
+
+.recent-table td {
+  padding: 0.35rem 0;
+  color: #111;
+  border: none;
+}
+
+.recent-table td:first-child {
+  white-space: nowrap;
+  font-weight: 600;
+  width: 7.5rem;
+  padding-right: 1rem;
+  color: #111;
+}
+
+.recent-table td.highlight {
+  font-weight: 500;
+}
+
+/* ---------- Publication list ---------- */
+.pub-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pub-item {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.pub-item:last-child {
+  border-bottom: none;
+}
+
+.pub-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 0.2rem;
+  line-height: 1.45;
+}
+
+.pub-authors {
+  font-size: 0.84rem;
+  color: #555;
+  margin-bottom: 0.15rem;
+}
+
+.pub-authors .author-self {
+  font-weight: 700;
+  color: #111;
+}
+
+.pub-venue {
+  font-size: 0.82rem;
+  color: #777;
+  font-style: italic;
+  margin-bottom: 0.4rem;
+}
+
+.pub-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+  margin-bottom: 0.35rem;
+  align-items: center;
+}
+
+.pub-links a {
+  color: #3a3aff;
+}
+
+.pub-links a:hover {
+  text-decoration: underline;
+}
+
+.btn-abstract {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.78rem;
+  color: #555;
+  background: none;
+  border: 1px solid #ccc;
+  padding: 0.05rem 0.45rem;
+  cursor: pointer;
+  line-height: 1.6;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.btn-abstract:hover {
+  border-color: #3a3aff;
+  color: #3a3aff;
+}
+
+.abstract-text {
+  font-size: 0.84rem;
+  color: #555;
+  line-height: 1.65;
+  margin-top: 0.55rem;
+  padding-left: 0.8rem;
+  border-left: 2px solid #ddd;
+  display: none;
+}
+
+.abstract-text.open {
+  display: block;
+}
+
+/* ---------- See all link ---------- */
+.see-all-link {
+  font-size: 0.85rem;
+  margin-top: 0.8rem;
+  display: block;
+}
+
+/* ---------- Projects page ---------- */
+.projects-intro {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  line-height: 1.75;
+}
+
+/* ---------- Photography page ---------- */
+.page-content-wide {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 3.5rem 2rem 5rem;
+}
+
+.photo-intro {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  line-height: 1.75;
+}
+
+.photo-category-heading {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #111;
+  letter-spacing: 0.04em;
+  margin: 2.4rem 0 1rem;
+  text-transform: lowercase;
+}
+
+/* 3-column grid */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.photo-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Placeholder for empty slots */
+.photo-placeholder {
+  background-color: #e4e4e4;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #bbb;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: default;
+  transition: background-color 0.15s;
+  overflow: hidden;
+}
+
+/* Actual image inside a card */
+.photo-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.photo-card img:hover {
+  opacity: 0.85;
+}
+
+/* Lightbox overlay */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+  cursor: zoom-out;
+  padding: 2rem;
+}
+
+.lightbox-overlay.active {
+  display: flex;
+}
+
+.lightbox-overlay img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 1.2rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  z-index: 10000;
+  font-family: 'Roboto Mono', monospace;
+  line-height: 1;
+  display: none;
+}
+
+.lightbox-overlay.active ~ .lightbox-close,
+.lightbox-close.active {
+  display: block;
+}
+
+.photo-caption {
+  font-size: 0.76rem;
+  color: #999;
+  margin-top: 0.35rem;
+  line-height: 1.4;
+}
+
+/* Shade variants for placeholder visual variety */
+.shade-1 { background-color: #dcdcdc; }
+.shade-2 { background-color: #d4d4d4; }
+.shade-3 { background-color: #e0e0e0; }
+.shade-4 { background-color: #d8d8d8; }
+.shade-5 { background-color: #e6e6e6; }
+.shade-6 { background-color: #cfcfcf; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  margin-top: 5rem;
+  padding: 1.2rem 0;
+  text-align: center;
+  font-size: 0.76rem;
+  color: #ccc;
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  body {
+    padding-top: 48px;
+    background-attachment: scroll;
+    background-size: cover;
+  }
+
+  .navbar {
+    padding: 0.8rem 1rem;
+  }
+
+  .page-content,
+  .page-content-wide { padding: 2.5rem 1.2rem 4rem; }
+
+  .profile-header {
+    flex-direction: column;
+  }
+
+  .profile-photo-wrapper {
+    margin: 0 0 1.5rem 0;
+  }
+
+  .profile-photo-img,
+  .profile-photo-placeholder { width: 100%; height: auto; }
+
+  .profile-name-block {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.profile-name-img {
+  height: 2.4rem;
+  width: auto;
+  display: block;
+}
+
+.profile-name { font-size: 2rem; }
+
+  .photo-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+}
+
+@media (max-width: 480px) {
+  .profile-name-block {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.profile-name-img {
+  height: 2.4rem;
+  width: auto;
+  display: block;
+}
+
+.profile-name { font-size: 1.7rem; }
+  .photo-grid { grid-template-columns: 1fr; }
+
+  body {
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center top;
+  }
+}
