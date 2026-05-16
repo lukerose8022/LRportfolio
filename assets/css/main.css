@@ -266,10 +266,31 @@ h2.section-heading {
 }
 
 /* ---------- Publication list ---------- */
-.pub-list {
-  list-style: none;
-  padding: 0;
+.pub-list,
+.writing-list {
+  list-style-type: none !important;
+  list-style: none !important;
+  padding-left: 1.8rem;
   margin: 0;
+}
+
+.pub-list li,
+.writing-list li {
+  list-style-type: none !important;
+  list-style: none !important;
+}
+
+.pub-item::before {
+  content: '\25C6';
+  font-size: 0.55em;
+  color: #111;
+  position: absolute;
+  left: -1.4rem;
+  top: 1.1rem;
+}
+
+.pub-item {
+  position: relative;
 }
 
 .pub-item {
